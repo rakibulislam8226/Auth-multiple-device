@@ -1,9 +1,10 @@
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from django.contrib import admin
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin", admin.site.urls),
+    path("api", include("apps.authentications.urls")),
 ]
 
 

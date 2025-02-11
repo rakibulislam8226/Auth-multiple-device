@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
+    # Local apps
+    "apps.authentications",
 ]
 
 MIDDLEWARE = [
@@ -119,6 +121,8 @@ USE_TZ = True
 # CORS
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+APPEND_SLASH = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
