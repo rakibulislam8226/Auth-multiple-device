@@ -1,0 +1,15 @@
+.idea
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+media/*
+
+staticfiles/*
+
+db.sqlite3
+celerybeat-schedule.db
+
+env
+venv
+.env
