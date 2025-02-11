@@ -4,7 +4,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path("admin", admin.site.urls),
-    path("api", include("apps.authentications.urls")),
+    path("api", include("apps.authentications.rest.urls")),
 ]
 
 
