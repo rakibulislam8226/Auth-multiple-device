@@ -16,6 +16,16 @@ const router = createRouter({
       path: "/register",
       component: () => import("../views/authentications/Register.vue"),
     },
+    {
+      path: "/forbidden",
+      name: "forbidden",
+      component: () => import("../views/errors/403.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: () => import("../views/errors/404.vue"),
+    },
     
   ],
 });
