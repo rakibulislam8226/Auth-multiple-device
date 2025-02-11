@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import auth from "../../services/api"
+import auth from "../../services/api";
+import iziToast from "izitoast";
 
 export default {
     data() {
@@ -18,6 +19,7 @@ export default {
         async login() {
             try {
                 await auth.login(this.username, this.password);
+                iziToast.success({ title: "Success", message: "Login successful" });
                 this.$router.push('/register');
             } catch (error) {
                 console.error("Login failed", error);
