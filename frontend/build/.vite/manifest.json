@@ -1,0 +1,30 @@
+{
+  "frontend/main.js": {
+    "file": "assets/main-DXO-x_za.js",
+    "name": "main",
+    "src": "frontend/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "frontend/views/authentications/Login.vue",
+      "frontend/views/authentications/Register.vue"
+    ]
+  },
+  "frontend/views/authentications/Login.vue": {
+    "file": "assets/Login-DLi4-16E.js",
+    "name": "Login",
+    "src": "frontend/views/authentications/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/main.js"
+    ]
+  },
+  "frontend/views/authentications/Register.vue": {
+    "file": "assets/Register-DVI0xC1C.js",
+    "name": "Register",
+    "src": "frontend/views/authentications/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/main.js"
+    ]
+  }
+}

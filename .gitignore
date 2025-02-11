@@ -13,3 +13,6 @@ celerybeat-schedule.db
 env
 venv
 .env
+
+node_modules
+package-lock.json
