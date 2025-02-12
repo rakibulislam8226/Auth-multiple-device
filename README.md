@@ -1,4 +1,4 @@
-# Project Name
+# Dettus
 
 ```markdown
 A full-stack web application built using **Django Rest Framework (DRF) for the backend** and **Vue.js for the frontend**, hosted on a single server.
