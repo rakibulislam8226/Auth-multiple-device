@@ -1,16 +1,22 @@
 {
   "frontend/main.js": {
-    "file": "assets/main-DXO-x_za.js",
+    "file": "assets/main-CffR7tvi.js",
     "name": "main",
     "src": "frontend/main.js",
     "isEntry": true,
     "dynamicImports": [
+      "frontend/views/authentications/Profile.vue",
       "frontend/views/authentications/Login.vue",
-      "frontend/views/authentications/Register.vue"
+      "frontend/views/authentications/Register.vue",
+      "frontend/views/errors/403.vue",
+      "frontend/views/errors/404.vue"
+    ],
+    "css": [
+      "assets/main-DcTM9zxN.css"
     ]
   },
   "frontend/views/authentications/Login.vue": {
-    "file": "assets/Login-DLi4-16E.js",
+    "file": "assets/Login-Rc7m2BGE.js",
     "name": "Login",
     "src": "frontend/views/authentications/Login.vue",
     "isDynamicEntry": true,
@@ -18,10 +24,40 @@
       "frontend/main.js"
     ]
   },
+  "frontend/views/authentications/Profile.vue": {
+    "file": "assets/Profile-DhYtM-ex.js",
+    "name": "Profile",
+    "src": "frontend/views/authentications/Profile.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/main.js"
+    ]
+  },
   "frontend/views/authentications/Register.vue": {
-    "file": "assets/Register-DVI0xC1C.js",
+    "file": "assets/Register-DkHr5RrJ.js",
     "name": "Register",
     "src": "frontend/views/authentications/Register.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/main.js"
+    ]
+  },
+  "frontend/views/errors/403.vue": {
+    "file": "assets/403-CggMbBcV.js",
+    "name": "403",
+    "src": "frontend/views/errors/403.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/main.js"
+    ],
+    "css": [
+      "assets/403-BRT8IcxE.css"
+    ]
+  },
+  "frontend/views/errors/404.vue": {
+    "file": "assets/404-4ZF9GXYp.js",
+    "name": "404",
+    "src": "frontend/views/errors/404.vue",
     "isDynamicEntry": true,
     "imports": [
       "frontend/main.js"
