@@ -7,8 +7,10 @@ from django.utils.timezone import now
 from rest_framework import status
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from common.permissions import IsUnauthenticated
 
 from ...models import UserDevice
 from ..serializers.auth import UserSerializer
@@ -20,21 +22,22 @@ User = get_user_model()
 class RegisterUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
+    permission_classes = [IsUnauthenticated]
+
     def post(self, request, *args, **kwargs):
+        """
+        During login, save user device details
+        """
         response = super().post(request, *args, **kwargs)
         if response.status_code == 200:
             user = self.get_user(request)
             ip_address = self.get_client_ip(request)
             user_agent = request.headers.get("User-Agent", "Unknown Device")
-
-            # Extracting device name from User-Agent
             device_name = self.extract_device_name(user_agent)
-
-            # Save or update device info
             device, created = UserDevice.objects.get_or_create(
                 user=user,
                 ip_address=ip_address,

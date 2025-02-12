@@ -20,7 +20,7 @@ export default {
             try {
                 await auth.login(this.username, this.password);
                 iziToast.success({ title: "Success", message: "Login successful" });
-                this.$router.push('/register');
+                this.$router.push('/profile');
             } catch (error) {
                 console.error("Login failed", error);
             }
