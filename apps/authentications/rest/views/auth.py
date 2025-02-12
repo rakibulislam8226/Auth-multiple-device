@@ -11,9 +11,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from common.permissions import IsUnauthenticated
+from common.utils import create_response
+
+from ..serializers.auth import UserSerializer
 
 from ...models import UserDevice
-from ..serializers.auth import UserSerializer
 
 User = get_user_model()
 
@@ -32,23 +34,30 @@ class CustomTokenObtainPairView(TokenObtainPairView):
         """
         During login, save user device details
         """
-        response = super().post(request, *args, **kwargs)
-        if response.status_code == 200:
-            user = self.get_user(request)
-            ip_address = self.get_client_ip(request)
-            user_agent = request.headers.get("User-Agent", "Unknown Device")
-            device_name = self.extract_device_name(user_agent)
-            device, created = UserDevice.objects.get_or_create(
-                user=user,
-                ip_address=ip_address,
-                user_agent=user_agent,
-                defaults={"device_name": device_name},
-            )
-            if not created:
-                device.last_active = now()
-                device.save()
+        try:
+            response = super().post(request, *args, **kwargs)
+            if response.status_code == 200:
+                user = self.get_user(request)
+                ip_address = self.get_client_ip(request)
+                user_agent = request.headers.get("User-Agent", "Unknown Device")
+                device_name = self.extract_device_name(user_agent)
+                device, created = UserDevice.objects.get_or_create(
+                    user=user,
+                    ip_address=ip_address,
+                    user_agent=user_agent,
+                    defaults={"device_name": device_name},
+                )
+                if not created:
+                    device.last_active = now()
+                    device.save()
 
-        return response
+            return response
+        except Exception as e:
+            return create_response(
+                status_bool=False,
+                message="Invalid username or password",
+                status_code=status.HTTP_400_BAD_REQUEST,
+            )
 
     def get_user(self, request):
         """Get user from login request"""
